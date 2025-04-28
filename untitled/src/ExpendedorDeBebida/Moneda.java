@@ -1,6 +1,6 @@
 package Tarea1;
 
-public abstract class Moneda {
+abstract class Moneda {
     public Moneda(){
 
     }

@@ -20,7 +20,7 @@ public class Expendedor {
             depositoSprite.addBebida(new Sprite(2000 + i));
         }
     }
-    public Bebida comprarBebida(Moneda m, int seleccion) {
+    Bebida comprarBebida(Moneda m, int seleccion) {
         if (m == null) return null;
 
         if (m.getValor() < precio) {

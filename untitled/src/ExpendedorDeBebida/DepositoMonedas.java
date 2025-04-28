@@ -1,7 +1,7 @@
 package Tarea1;
 import java.util.ArrayList;
 
-public class DepositoMonedas {
+class DepositoMonedas {
     private ArrayList<Moneda> almacen;
 
     public DepositoMonedas() {

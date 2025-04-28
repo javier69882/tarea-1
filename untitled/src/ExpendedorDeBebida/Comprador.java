@@ -1,6 +1,6 @@
 package Tarea1;
 
-public class Comprador {
+class Comprador {
     private String sonido;
     private int vuelto;
 

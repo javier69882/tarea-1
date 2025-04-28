@@ -1,6 +1,6 @@
 package Tarea1;
 
-public abstract class Bebida {
+abstract class Bebida {
     private int numero_serie;
 
     public Bebida(int serie){
