@@ -1,7 +1,8 @@
 package Tarea1;
 // Creacion de la enumeracion
 public enum PrecioProducto {
-    COCACOLA(1200),
+    //cambio COCACOLA por COCA, porque daba error
+    COCA(1200),
     FANTA(1200),
     SPRITE(1200),
     SUPER8(400),

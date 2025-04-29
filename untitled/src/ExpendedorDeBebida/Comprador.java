@@ -4,8 +4,8 @@ class Comprador {
     private String sonido;
     private int vuelto;
 // reemplazo cualBebida por cual Producto
-
-    public Comprador(Moneda m, int cualProducto, Expendedor exp)
+//cambio int por PrecioProducto
+    public Comprador(Moneda m, PrecioProducto cualProducto, Expendedor exp)
             throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
         sonido = null;
         vuelto = 0;

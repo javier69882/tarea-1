@@ -16,11 +16,11 @@ public class Expendedor {
     private Deposito<Dulce> depositoSuper8;
     private Deposito<Dulce> depositoSnickers;
     private Deposito<Moneda> monVu;
-    private int precio;
+    // private int precio; ya no se necesita
 
     // modifico el constructor, cambio numBebidas por numProducto,
-    public Expendedor(int numProductos, int precioProductos) {
-        this.precio = precioProductos;
+    public Expendedor(int numProductos) {
+        // this.precio = precioProductos; ya no se necesita
         depositoCocaCola = new Deposito <Bebida>();
         depositoSprite = new Deposito <Bebida>();
         //inicializo los depositos que faltan
@@ -41,14 +41,15 @@ public class Expendedor {
     }
 
     //modifico el metodo para que reciba producto
-    public Producto comprarProducto(Moneda m, int seleccion)
+    // cambio de int a PrecioProducto
+    public Producto comprarProducto(Moneda m, PrecioProducto seleccion)
             //agrego las excepciones
             throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
         if (m == null)
             //AGREGO EXCEPCION
             throw new PagoIncorrectoException();
-
-        if (m.getValor() < precio) {
+// cambio precio por seleccion.getPrecio()
+        if (m.getValor() < seleccion.getPrecio()){
             //DEVUELVE DINERO, AQUI IRA UN EXCEPCION
             int vuelto = m.getValor();
             while (vuelto >= 100) {
@@ -59,19 +60,23 @@ public class Expendedor {
             throw new PagoInsuficienteException();
         }
         Producto b = null;
-
-        if (seleccion == COCA) {
-            b = depositoCocaCola.getElemento();
-        } else if (seleccion == SPRITE) {
-            b = depositoSprite.getElemento();
-        }
-        //agrego el resto de los productos
-        else if (seleccion == FANTA) {
-            b = depositoFanta.getElemento();
-        } else if (seleccion == SUPER8) {
-            b = depositoSuper8.getElemento();
-        } else if (seleccion == SNIKERS) {
-            b = depositoSnickers.getElemento();
+//se cambia de if y else a switch y case
+        switch(seleccion) {
+            case COCA:
+                b = depositoCocaCola.getElemento();
+                break;
+            case SPRITE:
+                b = depositoSprite.getElemento();
+                break;
+            case FANTA:
+                b = depositoFanta.getElemento();
+                break;
+            case SUPER8:
+                b = depositoSuper8.getElemento();
+                break;
+            case SNIKERS:
+                b = depositoSnickers.getElemento();
+                break;
         }
 
         if (b == null) {
@@ -85,7 +90,8 @@ public class Expendedor {
             throw new NoHayProductoException();
         }
         // da vuelto
-        int diferencia = m.getValor() - precio;
+        //cambio precio por seleccion.getPrecio
+        int diferencia = m.getValor() - seleccion.getPrecio();
         while (diferencia >= 100) {
             monVu.addElemento(new Moneda100());
             diferencia -= 100;
@@ -99,8 +105,8 @@ public class Expendedor {
 
         return monVu.getElemento();
     }
-    public int getPrecio() {
+    // public int getPrecio() {  ya no se usa el getter
 
-        return precio;
-    }
+     //   return precio;
+   // }
 }
