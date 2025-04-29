@@ -6,7 +6,7 @@ abstract class Bebida extends Producto {
 
     public Bebida(int serie){
         //llamo al constructor de producto
-        super(serie) ;
+        super(serie) ;       //serie
     }
     //public int getSerie(){
        // return numero_serie;
