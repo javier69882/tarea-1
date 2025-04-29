@@ -15,5 +15,6 @@ public abstract class Producto {
     }
     //Metodo para beber, no lo implemento, porque ya no sera solo beber
     //ahora modifico bebida y creo dulce
+    public abstract String accionProducto();
 
 }

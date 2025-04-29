@@ -5,7 +5,7 @@ public class Snickers extends Dulce{
         super(serie);
     }
 
-    public String comer() {
+    public String accionProducto() {
         return "snickers";
     }
 }

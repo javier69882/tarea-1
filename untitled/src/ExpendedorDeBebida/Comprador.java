@@ -3,16 +3,16 @@ package Tarea1;
 class Comprador {
     private String sonido;
     private int vuelto;
-
-    public Comprador(Moneda m, int cualBebida, Expendedor exp) {
+// reemplazo cualBebida por cual Producto
+    public Comprador(Moneda m, int cualProducto, Expendedor exp) {
         sonido = null;
         vuelto = 0;
 
         if (m == null) return;
 
         limpiarVueltoAnterior(exp);
-
-        Bebida b = exp.comprarBebida(m, cualBebida);
+// se cambia todo lo referente a bebida por producto
+        Producto b = exp.comprarProducto(m, cualProducto);
         if (b == null) {
             vuelto = m.getValor();
         }

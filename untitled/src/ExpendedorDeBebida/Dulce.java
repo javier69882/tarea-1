@@ -6,7 +6,7 @@ public abstract class Dulce extends Producto {
         super(serie);
     }
     // disitinto a bebida
-    public abstract String comer();
+    public abstract String accionProducto();
 
 
 }

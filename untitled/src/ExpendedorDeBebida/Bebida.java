@@ -11,6 +11,6 @@ abstract class Bebida extends Producto {
     //public int getSerie(){
        // return numero_serie;
    // }, ya no es necesario
-    public abstract String beber();
+    public abstract String accionProducto();
 }
 //No hay necesidad de modificar subclase cocacola, sprite y fanta

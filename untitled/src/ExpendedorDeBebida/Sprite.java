@@ -5,7 +5,7 @@ class Sprite  extends Bebida{
         super(serie);
     }
 
-    public String beber() {
+    public String accionProducto() {
         return  "sprite";
     }
 }

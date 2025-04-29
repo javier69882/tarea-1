@@ -5,7 +5,7 @@ public class Super8 extends Dulce{
         super(serie);
     }
 
-    public String comer() {
+    public String accionProducto() {
         return "super8";
     }
 }
