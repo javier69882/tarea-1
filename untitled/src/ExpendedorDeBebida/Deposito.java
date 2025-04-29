@@ -1,23 +1,22 @@
 package Tarea1;
 import java.util.ArrayList;
+// Modificacion con un deposito genrico, se quito el anterior deposito de moneda y bebida
 
-class Deposito {
-    private ArrayList<Bebida> almacen;
+class Deposito<T> {
+    private ArrayList<T> almacen;
 
     public Deposito() {
-        almacen = new ArrayList<Bebida>();
+        almacen = new ArrayList<>();
     }
 
-    public void addBebida(Bebida b) {
-        almacen.add(b);
+    public void addElemento(T elemento) {
+        almacen.add(elemento);
     }
 
-    public Bebida getBebida() {
-        Bebida b = null;
+    public T getElemento() {
         if (almacen.size() > 0) {
-            b = almacen.remove(0);
+            return almacen.remove(0);
         }
-        return b;
+        return null;
     }
-
 }

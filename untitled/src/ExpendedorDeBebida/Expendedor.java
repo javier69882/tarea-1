@@ -4,20 +4,20 @@ public class Expendedor {
     public static final int COCA = 1;
     public static final int SPRITE = 2;
 
-    private Deposito depositoCocaCola;
-    private Deposito depositoSprite;
-    private DepositoMonedas monVu;
+    private Deposito<Bebida> depositoCocaCola;
+    private Deposito<Bebida> depositoSprite;
+    private Deposito<Moneda> monVu;
     private int precio;
 
     public Expendedor(int numBebidas, int precioBebidas) {
         this.precio = precioBebidas;
-        depositoCocaCola = new Deposito();
-        depositoSprite = new Deposito();
-        monVu = new DepositoMonedas();
+        depositoCocaCola = new Deposito <Bebida>();
+        depositoSprite = new Deposito <Bebida>();
+        monVu = new Deposito<Moneda> ();
 
         for (int i = 0; i < numBebidas; i++) {
-            depositoCocaCola.addBebida(new CocaCola(1000 + i));
-            depositoSprite.addBebida(new Sprite(2000 + i));
+            depositoCocaCola.addElemento(new CocaCola(1000 + i));
+            depositoSprite.addElemento(new Sprite(2000 + i));
         }
     }
     Bebida comprarBebida(Moneda m, int seleccion) {
@@ -26,7 +26,7 @@ public class Expendedor {
         if (m.getValor() < precio) {
             int vuelto = m.getValor();
             while (vuelto >= 100) {
-                monVu.addMoneda(new Moneda100());
+                monVu.addElemento(new Moneda100());
                 vuelto -= 100;
             }
             return null;
@@ -34,32 +34,34 @@ public class Expendedor {
         Bebida b = null;
 
         if (seleccion == COCA) {
-            b = depositoCocaCola.getBebida();
+            b = depositoCocaCola.getElemento();
         } else if (seleccion == SPRITE) {
-            b = depositoSprite.getBebida();
+            b = depositoSprite.getElemento();
         }
 
         if (b == null) {
 
             int vuelto = m.getValor();
             while (vuelto >= 100) {
-                monVu.addMoneda(new Moneda100());
+                monVu.addElemento(new Moneda100());
                 vuelto -= 100;
             }
             return null;
         }
         int diferencia = m.getValor() - precio;
         while (diferencia >= 100) {
-            monVu.addMoneda(new Moneda100());
+            monVu.addElemento(new Moneda100());
             diferencia -= 100;
         }
 
         return b;
     }
     public Moneda getVuelto() {
-        return monVu.getMoneda();
+
+        return monVu.getElemento();
     }
     public int getPrecio() {
+
         return precio;
     }
 }
