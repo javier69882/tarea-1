@@ -18,8 +18,9 @@ public class Expendedor {
     private Deposito<Moneda> monVu;
     private int precio;
 
-    public Expendedor(int numBebidas, int precioBebidas) {
-        this.precio = precioBebidas;
+    // modifico el constructor, cambio numBebidas por numProducto,
+    public Expendedor(int numProductos, int precioProductos) {
+        this.precio = precioProductos;
         depositoCocaCola = new Deposito <Bebida>();
         depositoSprite = new Deposito <Bebida>();
         //inicializo los depositos que faltan
@@ -29,12 +30,17 @@ public class Expendedor {
 
         monVu = new Deposito<Moneda> ();
 
-        for (int i = 0; i < numBebidas; i++) {
+        // agrego los elementos a los depositos, osea los nuevos productos, y reemplazo numBebida por numProducto
+        for (int i = 0; i < numProductos; i++) {
             depositoCocaCola.addElemento(new CocaCola(1000 + i));
             depositoSprite.addElemento(new Sprite(2000 + i));
+            depositoFanta.addElemento(new Fanta(3000 + i));
+            depositoSuper8.addElemento(new Super8(4000 + i));
+            depositoSnickers.addElemento(new Snickers(5000 + i));
         }
     }
-    Bebida comprarBebida(Moneda m, int seleccion) {
+    //modifico el metodo para que reciba producto
+    public Producto comprarProducto(Moneda m, int seleccion) {
         if (m == null) return null;
 
         if (m.getValor() < precio) {
@@ -45,12 +51,20 @@ public class Expendedor {
             }
             return null;
         }
-        Bebida b = null;
+        Producto b = null;
 
         if (seleccion == COCA) {
             b = depositoCocaCola.getElemento();
         } else if (seleccion == SPRITE) {
             b = depositoSprite.getElemento();
+        }
+        //agrego el resto de los productos
+        else if (seleccion == FANTA) {
+            b = depositoFanta.getElemento();
+        } else if (seleccion == SUPER8) {
+            b = depositoSuper8.getElemento();
+        } else if (seleccion == SNIKERS) {
+            b = depositoSnickers.getElemento();
         }
 
         if (b == null) {
