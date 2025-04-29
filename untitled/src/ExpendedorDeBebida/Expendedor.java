@@ -3,10 +3,18 @@ package Tarea1;
 public class Expendedor {
     public static final int COCA = 1;
     public static final int SPRITE = 2;
+    //agrego lo  que falta
+    public static final int FANTA = 3;
+    public static final int SUPER8 = 4;
+    public static final int SNIKERS = 5;
 
 
     private Deposito<Bebida> depositoCocaCola;
     private Deposito<Bebida> depositoSprite;
+    //creo los depositos que faltan
+    private Deposito<Bebida> depositoFanta;
+    private Deposito<Dulce> depositoSuper8;
+    private Deposito<Dulce> depositoSnickers;
     private Deposito<Moneda> monVu;
     private int precio;
 
@@ -14,6 +22,11 @@ public class Expendedor {
         this.precio = precioBebidas;
         depositoCocaCola = new Deposito <Bebida>();
         depositoSprite = new Deposito <Bebida>();
+        //inicializo los depositos que faltan
+        depositoFanta = new Deposito<Bebida>();
+        depositoSuper8 = new Deposito<Dulce>();
+        depositoSnickers = new Deposito<Dulce>();
+
         monVu = new Deposito<Moneda> ();
 
         for (int i = 0; i < numBebidas; i++) {
