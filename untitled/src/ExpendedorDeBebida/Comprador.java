@@ -4,7 +4,9 @@ class Comprador {
     private String sonido;
     private int vuelto;
 // reemplazo cualBebida por cual Producto
-    public Comprador(Moneda m, int cualProducto, Expendedor exp) {
+
+    public Comprador(Moneda m, int cualProducto, Expendedor exp)
+            throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
         sonido = null;
         vuelto = 0;
 
@@ -12,7 +14,10 @@ class Comprador {
 
         limpiarVueltoAnterior(exp);
 // se cambia todo lo referente a bebida por producto
-        Producto p = exp.comprarProducto(m, cualProducto);
+
+        Producto p = exp.comprarProducto(m, cualProducto);// comprarPrducto da error, por los throws
+        //asi que voy a disipar los throws en el constructor, para usarlos try y catch en el main
+        //como sale en la pauta
         if (p == null) {
             vuelto = m.getValor();
         }

@@ -39,17 +39,24 @@ public class Expendedor {
             depositoSnickers.addElemento(new Snickers(5000 + i));
         }
     }
+
     //modifico el metodo para que reciba producto
-    public Producto comprarProducto(Moneda m, int seleccion) {
-        if (m == null) return null;
+    public Producto comprarProducto(Moneda m, int seleccion)
+            //agrego las excepciones
+            throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
+        if (m == null)
+            //AGREGO EXCEPCION
+            throw new PagoIncorrectoException();
 
         if (m.getValor() < precio) {
+            //DEVUELVE DINERO, AQUI IRA UN EXCEPCION
             int vuelto = m.getValor();
             while (vuelto >= 100) {
                 monVu.addElemento(new Moneda100());
                 vuelto -= 100;
             }
-            return null;
+            //AGREGO EXCEPCION
+            throw new PagoInsuficienteException();
         }
         Producto b = null;
 
@@ -68,14 +75,16 @@ public class Expendedor {
         }
 
         if (b == null) {
+            // NO HAY BEBIDA, DEVUELVE DINERO
 
             int vuelto = m.getValor();
             while (vuelto >= 100) {
                 monVu.addElemento(new Moneda100());
                 vuelto -= 100;
             }
-            return null;
+            throw new NoHayProductoException();
         }
+        // da vuelto
         int diferencia = m.getValor() - precio;
         while (diferencia >= 100) {
             monVu.addElemento(new Moneda100());
@@ -84,6 +93,8 @@ public class Expendedor {
 
         return b;
     }
+
+
     public Moneda getVuelto() {
 
         return monVu.getElemento();
