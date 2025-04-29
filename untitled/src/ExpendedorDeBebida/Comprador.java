@@ -12,12 +12,13 @@ class Comprador {
 
         limpiarVueltoAnterior(exp);
 // se cambia todo lo referente a bebida por producto
-        Producto b = exp.comprarProducto(m, cualProducto);
-        if (b == null) {
+        Producto p = exp.comprarProducto(m, cualProducto);
+        if (p == null) {
             vuelto = m.getValor();
         }
         else {
-            sonido = b.beber();
+            // cambio los metodos de sonido
+            sonido = p.accionProducto();
             Moneda mon;
             while ((mon = exp.getVuelto()) != null) {
                 vuelto += mon.getValor();
@@ -34,8 +35,8 @@ class Comprador {
     public int cuantoVuelto() {
         return vuelto;
     }
-
-    public String queBebiste() {
+// se cambia el queBebiste por queAccionProducto
+    public String queAccionProducto() {
         return sonido;
     }
 }
