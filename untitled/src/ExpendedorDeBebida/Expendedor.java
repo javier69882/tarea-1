@@ -1,13 +1,21 @@
 package Tarea1;
 
-public class Expendedor {
-    public static final int COCA = 1;
-    public static final int SPRITE = 2;
-    //agrego lo  que falta
-    public static final int FANTA = 3;
-    public static final int SUPER8 = 4;
-    public static final int SNIKERS = 5;
+/**
+ * Clase representa un expendedor de productos
+ * Adminisra los productos y el dinero
+ */
 
+public class Expendedor {
+    /** Constante para seleccionar CocaCola */
+    public static final int COCA = 1;
+    /** Constante para seleccionar Sprite */
+    public static final int SPRITE = 2;
+    /** Constante para seleccionar Fanta */
+    public static final int FANTA = 3;
+    /** Constante para seleccionar Super8 */
+    public static final int SUPER8 = 4;
+    /** Constante para seleccionar Snickers */
+    public static final int SNIKERS = 5;
 
     private Deposito<Bebida> depositoCocaCola;
     private Deposito<Bebida> depositoSprite;
@@ -19,6 +27,12 @@ public class Expendedor {
     // private int precio; ya no se necesita
 
     // modifico el constructor, cambio numBebidas por numProducto,
+
+    /**
+     * Constructor de expendedor
+     * Inicializa los depositos de bebidas y dulces
+     * @param numProductos cantidad de productos a agregar
+     */
     public Expendedor(int numProductos) {
         // this.precio = precioProductos; ya no se necesita
         depositoCocaCola = new Deposito <Bebida>();
@@ -42,6 +56,15 @@ public class Expendedor {
 
     //modifico el metodo para que reciba producto
     // cambio de int a PrecioProducto
+    /**
+     * Metodo para comprar un producto
+     * @param m moneda que se va a usar para comprar el producto
+     * @param seleccion del producto que se va a comprar
+     * @return devuelve el producto comprado
+     * @throws PagoIncorrectoException si la moneda no es correcta
+     * @throws PagoInsuficienteException si la moneda no es suficiente
+     * @throws NoHayProductoException si no hay producto disponible
+     */
     public Producto comprarProducto(Moneda m, PrecioProducto seleccion)
             //agrego las excepciones
             throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
@@ -99,9 +122,14 @@ public class Expendedor {
 
         return b;
     }
-
+    /**
+     * Devuelve el vuelto
+     *
+     * @return Una moneda del vuelto, o null si no hay mas monedas
+     */
 
     public Moneda getVuelto() {
+
 
         return monVu.getElemento();
     }
