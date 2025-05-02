@@ -1,6 +1,8 @@
 package Tarea1;
 
-class Moneda500 extends Moneda{
+// se agrega extends Moneda a la clase
+class Moneda500 extends Moneda {
+
     public Moneda500(){
         super();
 
